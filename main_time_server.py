@@ -12,6 +12,10 @@ def time_server():
     context = zmq.Context()
     answer_time = context.socket(zmq.REP)
     answer_time.bind("tcp://*:5558")
+    try:
+        while True:
+            mes = answer_time.recv()
+            answer_time.format(pickle.dumps(server.get_time())
     answer_time.recv()
     time = server.get_time()
     t = pickle.dumps(time)
