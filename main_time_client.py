@@ -15,10 +15,12 @@ class TimeServerProxyIPC():
         context = zmq.Context()
         ask_time = context.socket(zmq.REQ)
         ask_time.connect("tcp://localhost:5558")
-        ask_time.send(b"time")
-        t = ask_time.recv()
-        time = pickle.loads(t)
-        print("receive time {}".format(time))
+        try:
+            while True:
+                ask_time.send(b"time")
+                time = pickle.loads(ask_time.recv())
+        finally:
+            pass
 
         return time
 

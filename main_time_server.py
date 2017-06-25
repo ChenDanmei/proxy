@@ -15,12 +15,9 @@ def time_server():
     try:
         while True:
             mes = answer_time.recv()
-            answer_time.format(pickle.dumps(server.get_time())
-    answer_time.recv()
-    time = server.get_time()
-    t = pickle.dumps(time)
-    answer_time.send(t)
-    print("send time {}".format(time))
+            answer_time.send(pickle.dumps(server.get_time()))
+    finally:
+        pass
 
 
 if __name__ == '__main__':
