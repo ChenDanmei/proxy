@@ -20,7 +20,8 @@ class TimeServerProxyIPC():
                 ask_time.send(b"time")
                 time = pickle.loads(ask_time.recv())
         finally:
-            pass
+            ask_time.close()
+            context.term()
 
         return time
 

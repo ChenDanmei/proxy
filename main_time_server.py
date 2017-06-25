@@ -17,7 +17,8 @@ def time_server():
             mes = answer_time.recv()
             answer_time.send(pickle.dumps(server.get_time()))
     finally:
-        pass
+        answer_time.close()
+        context.term()
 
 
 if __name__ == '__main__':
