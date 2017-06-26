@@ -1,18 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import unittest
 from TimeServerProxyIPC import TimeServerProxyIPC
-import time
+from main_time_server import time_server_process
+import threading
+import datetime as dt
 
 
-def test_serverIPC():
-    server = TimeServerProxyIPC()
-    try:
-        while True:
-            tm = server.get_time()
-            time.sleep(1)
-    finally:
-        pass
+class TestStringMethods(unittest.TestCase):
+
+    def test_IPC(self):
+        server = threading.Thread(target=time_server_process, args=())
+        server.start()
+        client = TimeServerProxyIPC()
+        result=client.get_time() - dt.datetime.today()
+        #result= dt.datetime.today()-client.get_time()    # plus de 5ms
+        self.assertEqual(result.microseconds < 5, True)
 
 if __name__ == '__main__':
-    test_serverIPC()
+    unittest.main()
