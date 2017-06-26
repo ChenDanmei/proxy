@@ -21,5 +21,5 @@ def time_server_process():
         context.term()
 
 
-if __name__ == '__main__':
-    time_server_process()
+#if __name__ == '__main__':
+#    time_server_process()
