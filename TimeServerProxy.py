@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from TimeServer import Server
+from TimeServer import TimeServer
 
 
 class TimeServerProxy():
 
     def __init__(self):
-        self.time_server = Server()
+        self.time_server = TimeServer()
 
     def get_time(self):
 

@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import zmq
-from TimeServer import Server
+from TimeServer import TimeServer
 import pickle
 
 
-def time_server():
+def time_server_process():
 
-    server = Server()
+    server = TimeServer()
     context = zmq.Context()
     answer_time = context.socket(zmq.REP)
     answer_time.bind("tcp://*:5558")
@@ -22,4 +22,4 @@ def time_server():
 
 
 if __name__ == '__main__':
-    time_server()
+    time_server_process()

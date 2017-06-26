@@ -4,7 +4,7 @@
 import datetime as dt
 
 
-class Server():
+class TimeServer():
 
     def __init__(self):
         pass
