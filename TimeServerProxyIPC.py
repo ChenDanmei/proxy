@@ -6,12 +6,10 @@ import pickle
 
 
 class TimeServerProxyIPC():
-
     def __init__(self):
         pass
 
     def get_time(self):
-
         context = zmq.Context()
         ask_time = context.socket(zmq.REQ)
         ask_time.connect("tcp://localhost:5558")
